@@ -13,7 +13,7 @@
         <item name="android:paddingBottom">4px</item>
         <item name="android:textColor">#67DD00</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowColor">#469400</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
         <item name="android:shadowRadius">15</item>
@@ -35,7 +35,7 @@
         <item name="android:paddingBottom">4px</item>
         <item name="android:textColor">#003BEA</item>
         <item name="android:textSize">60sp</item>
-        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowColor">#002CAD</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
         <item name="android:shadowRadius">15</item>
@@ -46,7 +46,7 @@
         <item name="android:paddingBottom">4px</item>
         <item name="android:textColor">#FFAB00</item>
         <item name="android:textSize">80sp</item>
-        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowColor">#8D6000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
         <item name="android:shadowRadius">15</item>

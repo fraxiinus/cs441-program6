@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:padding="10dp"
         android:layout_height="match_parent">
     <TextView
             android:id="@+id/title_tv"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:text="Hello World"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    <FrameLayout
+    <TextView
+            android:id="@+id/subreddit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"/>
+    <android.support.constraint.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -23,7 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
 
         <TextView
                 android:layout_marginStart="5dp"
@@ -31,6 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hello World"
-                style="@style/OneRarityText"/>
-    </FrameLayout>
+                style="@style/OneRarityText"
+                app:layout_constraintBottom_toBottomOf="@id/iv1"
+        app:layout_constraintLeft_toLeftOf="@+id/iv1"/>
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>

@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.NetworkImageView
 
-data class ViewHolder(var title: TextView?, var rarity: TextView?, var image: NetworkImageView?)
+data class ViewHolder(var title: TextView?, var subreddit: TextView?, var rarity: TextView?, var image: NetworkImageView?)
 
 class CharacterAdapter(context: Context, characters: List<RedditData>, var imageLoader: ImageLoader): ArrayAdapter<RedditData>(context, R.layout.character_item, characters.reversed()) {
 
@@ -22,7 +22,10 @@ class CharacterAdapter(context: Context, characters: List<RedditData>, var image
         if(cview == null) {
             val inflater = LayoutInflater.from(context)
             cview = inflater.inflate(R.layout.character_item, parent, false)
-            viewHolder = ViewHolder(title = cview?.findViewById(R.id.title_tv), rarity = cview?.findViewById(R.id.rarity_tv), image = cview?.findViewById(R.id.iv1))
+            viewHolder = ViewHolder(title = cview?.findViewById(R.id.title_tv),
+                                    subreddit = cview?.findViewById(R.id.subreddit_tv),
+                                    rarity = cview?.findViewById(R.id.rarity_tv),
+                                    image = cview?.findViewById(R.id.iv1))
             cview?.tag = viewHolder
         } else {
             viewHolder = cview.tag as ViewHolder
@@ -31,6 +34,7 @@ class CharacterAdapter(context: Context, characters: List<RedditData>, var image
         viewHolder.title?.text = character?.title
         viewHolder.rarity?.text = character?.rarity
         viewHolder.image?.setImageUrl(character?.url, imageLoader)
+        viewHolder.subreddit?.text = character?.subreddit
 
         when(character?.rarityValue) {
             0 -> {
