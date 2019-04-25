@@ -13,22 +13,24 @@ class GameController(private val game_layout: View) {
     private val onButtonClick = View.OnClickListener { view ->
         //Toast.makeText(game_layout.context, "button clicked!!!", Toast.LENGTH_SHORT).show()
         //game_layout.findViewById<TextView>(R.id.message).text = (game_layout.context.applicationContext as ApplicationData).cashMoney.toString()
-
-        redditFunctions.pullNewCharacter(RARITY_SCALE.values().random(), object: ServerCallback {
-
-            override fun onSuccess(result: RedditData) {
-                game_layout.findViewById<TextView>(R.id.message).text = "${result.rarity} - ${result.title}"
-            }
-
-            override fun onFailure(reason: String) {
-                game_layout.findViewById<TextView>(R.id.message).text = reason
-            }
-
-        })
+        pullCharacter()
     }
 
     init {
         game_layout.findViewById<Button>(R.id.button).setOnClickListener(onButtonClick)
+    }
+
+    fun pullCharacter() {
+        redditFunctions.pullNewCharacter(RARITY_SCALE.values().random(), object: ServerCallback {
+
+            override fun onSuccess(result: RedditData) {
+                game_layout.findViewById<TextView>(R.id.message).text = "${result.rarity} - ${result.rarityValue}\n${result.subreddit}\n${result.title}\n${result.filename}"
+            }
+
+            override fun onFailure(reason: String) {
+                pullCharacter()
+            }
+        })
     }
 
 }

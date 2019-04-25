@@ -14,7 +14,7 @@ enum class RARITY_SCALE {
     BAD, OKAY, GOOD, GOODEST
 }
 
-data class RedditData(var title: String, var filename: String, var rarity: String)
+data class RedditData(var title: String, var subreddit: String, var filename: String, var url: String, var isSFW: Boolean, var rarity: String, var rarityValue: Int)
 
 class RedditFunctions(private val context: Context) {
 
@@ -26,7 +26,22 @@ class RedditFunctions(private val context: Context) {
     private var queue = Volley.newRequestQueue(context)
 
     fun pullNewCharacter(rarity: RARITY_SCALE, callback: ServerCallback) {
-        getRedditPostingData(reddit_subreddit_url[(0 until reddit_subreddit_url.size).random()], rarity, callback)
+        // Download reddit data
+        getRedditPostingData(reddit_subreddit_url[(0 until reddit_subreddit_url.size).random()], rarity, object: ServerCallback {
+            // Reddit data returned
+            override fun onSuccess(result: RedditData) {
+                // Make sure post is sfw and file is acceptable type
+                if(!result.isSFW || result.filename.isBlank()) {
+                    callback.onFailure("Invalid post, try again")
+                } else {
+                    callback.onSuccess(result)
+                }
+            }
+
+            override fun onFailure(reason: String) {
+                callback.onFailure(reason)
+            }
+        })
     }
 
     private fun getRedditPostingData(subreddit: String, rarity: RARITY_SCALE, callback: ServerCallback) {
@@ -44,7 +59,14 @@ class RedditFunctions(private val context: Context) {
                 // Make sure we have valid data
                 if(responseJson != null) {
                     Toast.makeText(context, responseJson.string("title"), Toast.LENGTH_SHORT).show()
-                    val redditData = RedditData(responseJson.string("title") ?: "No Title", responseJson.string("url") ?: "", rarity_list[rarity.ordinal][(0..3).random()])
+
+                    val redditData = RedditData(responseJson.string("title") ?: "No Title",
+                                                subreddit,
+                                                isValidUrl(responseJson.string("url") ?: ""),
+                                                responseJson.string("url") ?: "",
+                                                !(responseJson.boolean("over_18") ?: false),
+                                                rarity_list[rarity.ordinal][(0..3).random()], rarity.ordinal)
+
                     callback.onSuccess(redditData)
                 }
             },
@@ -56,5 +78,26 @@ class RedditFunctions(private val context: Context) {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
+    }
+
+    private fun downloadRedditImage() {
+
+    }
+
+
+    private fun isValidUrl(url: String): String {
+        // Find the last slash that starts the filename
+        val lastForwardSlash = url.lastIndexOf('/', url.length, true)
+
+        // Check if the filetype is acceptable
+        val acceptableFileType = url.endsWith("jpg", true) || url.endsWith("png", true) || url.endsWith("jpeg", true)
+
+        // Return blank if url is no good
+        if(lastForwardSlash <= 0 || !acceptableFileType) {
+            return ""
+        }
+
+        // Return filename
+        return url.substring(lastForwardSlash + 1, url.length)
     }
 }
