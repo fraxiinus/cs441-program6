@@ -6,4 +6,6 @@ class ApplicationData : Application() {
 
     var cashMoney: Int = 100
 
+    var memeCollection = mutableListOf<RedditData>()
+
 }

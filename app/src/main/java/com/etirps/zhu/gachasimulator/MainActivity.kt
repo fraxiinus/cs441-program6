@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.shop_content.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var gameController: GameController
+    private lateinit var collectionController: CollectionController
+    private lateinit var shopController: ShopController
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         // Get the index of what is currently displayed, 0 = game, 1 = collection, 3 = shop
         val displayedView = content_flipper.displayedChild
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                     content_flipper.inAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.in_from_left)
                     content_flipper.outAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.out_from_right)
                     content_flipper.displayedChild = 0
+                    gameController.updateView()
                 }
                 return@OnNavigationItemSelectedListener true
             }
@@ -30,11 +35,14 @@ class MainActivity : AppCompatActivity() {
                     content_flipper.inAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.in_from_right)
                     content_flipper.outAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.out_from_left)
                     content_flipper.displayedChild = 1
+                    collectionController.updateView()
                 } else if(displayedView == 2) {
                     content_flipper.inAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.in_from_left)
                     content_flipper.outAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.out_from_right)
                     content_flipper.displayedChild = 1
+                    collectionController.updateView()
                 }
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_shop -> {
@@ -42,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                     content_flipper.inAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.in_from_right)
                     content_flipper.outAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.out_from_left)
                     content_flipper.displayedChild = 2
+                    shopController.updateView()
                 }
                 return@OnNavigationItemSelectedListener true
             }
@@ -53,9 +62,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        GameController(game_container)
-        CollectionController(collection_container)
-        ShopController(shop_container)
+        gameController = GameController(game_container)
+        collectionController = CollectionController(collection_container)
+        shopController = ShopController(shop_container)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }

@@ -1,9 +1,12 @@
 package com.etirps.zhu.gachasimulator
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.widget.Toast
 import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.beust.klaxon.JsonObject
@@ -14,16 +17,14 @@ enum class RARITY_SCALE {
     BAD, OKAY, GOOD, GOODEST
 }
 
-data class RedditData(var title: String, var subreddit: String, var filename: String, var url: String, var isSFW: Boolean, var rarity: String, var rarityValue: Int)
+data class RedditData(var title: String, var subreddit: String, var filename: String, var url: String, var image: Bitmap?, var isSFW: Boolean, var rarity: String, var rarityValue: Int)
 
-class RedditFunctions(private val context: Context) {
+class RedditFunctions(private val context: Context, private var queue: RequestQueue) {
 
     private var reddit_base_url = """https://www.reddit.com/r/"""
     private var reddit_subreddit_url = arrayOf("bossfight", "hmmm", "woof_irl", "meow_irl", "blessedimages")
     private var reddit_end_url = """/top/.json?count=20?sort=top&t=all"""
     private var rarity_list = arrayOf(arrayOf("F", "FF", "LOL", "BAD"), arrayOf("C", "CC", "HUH", "OK"), arrayOf("A", "AA", "COOL", "NICE"), arrayOf("S", "SS", "BEST", "WOW"))
-
-    private var queue = Volley.newRequestQueue(context)
 
     fun pullNewCharacter(rarity: RARITY_SCALE, callback: ServerCallback) {
         // Download reddit data
@@ -64,8 +65,10 @@ class RedditFunctions(private val context: Context) {
                                                 subreddit,
                                                 isValidUrl(responseJson.string("url") ?: ""),
                                                 responseJson.string("url") ?: "",
+                                                null,
                                                 !(responseJson.boolean("over_18") ?: false),
-                                                rarity_list[rarity.ordinal][(0..3).random()], rarity.ordinal)
+                                                rarity_list[rarity.ordinal][(0..3).random()],
+                                                rarity.ordinal)
 
                     callback.onSuccess(redditData)
                 }
@@ -79,11 +82,6 @@ class RedditFunctions(private val context: Context) {
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
     }
-
-    private fun downloadRedditImage() {
-
-    }
-
 
     private fun isValidUrl(url: String): String {
         // Find the last slash that starts the filename
