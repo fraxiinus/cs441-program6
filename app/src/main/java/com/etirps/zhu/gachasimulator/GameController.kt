@@ -2,37 +2,24 @@ package com.etirps.zhu.gachasimulator
 
 import android.graphics.Bitmap
 import android.util.LruCache
+import android.view.InputQueue
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.NetworkImageView
 import com.android.volley.toolbox.Volley
 import com.beust.klaxon.JsonObject
 
-class GameController(private val game_layout: View): ViewController(game_layout) {
-
-    private val queue = Volley.newRequestQueue(game_layout.context)
-    private val imageLoader = ImageLoader(queue, object: ImageLoader.ImageCache {
-        private var cache = LruCache<String, Bitmap>(10)
-
-        override fun getBitmap(url: String): Bitmap? {
-            return cache.get(url)
-        }
-
-        override fun putBitmap(url: String, bitmap: Bitmap) {
-            cache.put(url, bitmap)
-        }
-
-    })
+class GameController(private val game_layout: View, private val queue: RequestQueue, private val imageLoader: ImageLoader): ViewController(game_layout) {
 
     override fun updateView() {
         //
     }
 
     private val redditFunctions = RedditFunctions(game_layout.context, queue)
-
 
     private val onButtonClick = View.OnClickListener { view ->
         //Toast.makeText(game_layout.context, "button clicked!!!", Toast.LENGTH_SHORT).show()
