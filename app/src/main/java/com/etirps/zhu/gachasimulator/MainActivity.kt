@@ -1,5 +1,7 @@
 package com.etirps.zhu.gachasimulator
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -10,6 +12,7 @@ import android.widget.TextView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
+import com.beust.klaxon.Klaxon
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.collection_content.*
 import kotlinx.android.synthetic.main.game_content.*
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var queue: RequestQueue
     private lateinit var imageLoader: ImageLoader
+    private lateinit var prefs: SharedPreferences
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         // Get the index of what is currently displayed, 0 = game, 1 = collection, 3 = shop
@@ -61,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                     content_flipper.displayedChild = 2
                     shopController.updateView()
                 }
+                val collection = Klaxon().toJsonString((application as ApplicationData).memeCollection)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -85,6 +90,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        prefs = this.getSharedPreferences("com.etirps.zhu.gachasimulator", Context.MODE_PRIVATE)
+
+        (application as ApplicationData).cashMoney = prefs.getInt("com.etirps.zhu.gachasimulator.cashmoney", 0)
         findViewById<TextView>(R.id.orb_counter).text = (application as ApplicationData).cashMoney.toString()
 
         gameController = GameController(game_container, queue, imageLoader)
@@ -92,5 +100,24 @@ class MainActivity : AppCompatActivity() {
         shopController = ShopController(shop_container)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    override fun onPause() {
+        prefs.edit().putInt("com.etirps.zhu.gachasimulator.cashmoney", (application as ApplicationData).cashMoney).apply()
+
+        val collection = Klaxon().toJsonString((application as ApplicationData).memeCollection)
+        prefs.edit().putString("com.etirps.zhu.gachasimulator.collection", collection).apply()
+
+        super.onPause()
+    }
+
+    override fun onResume() {
+        (application as ApplicationData).cashMoney = prefs.getInt("com.etirps.zhu.gachasimulator.cashmoney", 0)
+        val collection = prefs.getString("com.etirps.zhu.gachasimulator.collection", "[]")
+        (application as ApplicationData).memeCollection = Klaxon().parseArray<RedditData>(collection)?.toMutableList() ?: mutableListOf()
+
+        findViewById<TextView>(R.id.orb_counter).text = (application as ApplicationData).cashMoney.toString()
+
+        super.onResume()
     }
 }

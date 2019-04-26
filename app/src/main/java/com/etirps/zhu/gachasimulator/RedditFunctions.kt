@@ -17,7 +17,7 @@ enum class RARITY_SCALE {
     BAD, OKAY, GOOD, GOODEST
 }
 
-data class RedditData(var title: String, var subreddit: String, var filename: String, var url: String, var image: Bitmap?, var isSFW: Boolean, var rarity: String, var rarityValue: Int)
+data class RedditData(var title: String, var subreddit: String, var filename: String, var url: String, var image: Bitmap? = null, var isSFW: Boolean, var rarity: String, var rarityValue: Int)
 
 class RedditFunctions(private val context: Context, private var queue: RequestQueue) {
 
