@@ -4,7 +4,7 @@ import android.app.Application
 
 class ApplicationData : Application() {
 
-    var cashMoney: Int = 100
+    var cashMoney: Int = 0
 
     var memeCollection = mutableListOf<RedditData>()
 

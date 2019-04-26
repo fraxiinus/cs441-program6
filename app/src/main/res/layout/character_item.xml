@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="#80FFFFFF">
+        <TextView
+                android:id="@+id/title_tv"
+                android:textSize="30sp"
+                android:text="Hello World"
+                android:textStyle="bold"
+                android:textColor="#315165"
+                android:shadowColor="@android:color/white"
+                android:shadowRadius="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="Hello world"
+                    android:id="@+id/subreddit_tv"
+                    android:textStyle="bold"
+                    android:textColor="#315165"
+                    android:shadowColor="@android:color/white"
+                    android:shadowRadius="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="5dp"
+                    android:textSize="15sp"/>
+
+            <ImageView
+                    android:id="@+id/rarity_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/five"
+                    app:layout_constraintBottom_toBottomOf="@id/iv1"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+        </LinearLayout>
+
+        <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/iv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+    </LinearLayout>
+</LinearLayout>
