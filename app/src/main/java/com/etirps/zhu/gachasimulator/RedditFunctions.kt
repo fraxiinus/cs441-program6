@@ -24,7 +24,7 @@ class RedditFunctions(private val context: Context, private var queue: RequestQu
     private var reddit_base_url = """https://www.reddit.com/r/"""
     private var reddit_subreddit_url = arrayOf("bossfight", "hmmm", "woof_irl", "meow_irl", "blessedimages")
     private var reddit_end_url = """/top/.json?count=20?sort=top&t=all"""
-    private var rarity_list = arrayOf(arrayOf("F", "FF", "LITERALLY GARBAGE", "WASTE OF MONEY"), arrayOf("C", "CC", "HUH", "OK"), arrayOf("A", "AA", "COOL", "NICE"), arrayOf("S", "SS", "BEST", "WOW"))
+    private var rarity_list = arrayOf(arrayOf("F", "FF", "GARBAGE", "TRASH"), arrayOf("C", "CC", "MEH", "BLEH"), arrayOf("A", "AA", "COOL", "NEAT"), arrayOf("S", "SS", "BEST", "SSSRU+"))
 
     fun pullNewCharacter(rarity: RARITY_SCALE, callback: ServerCallback) {
         // Download reddit data
@@ -59,7 +59,7 @@ class RedditFunctions(private val context: Context, private var queue: RequestQu
 
                 // Make sure we have valid data
                 if(responseJson != null) {
-                    Toast.makeText(context, responseJson.string("title"), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, responseJson.string("title"), Toast.LENGTH_SHORT).show()
 
                     val redditData = RedditData(responseJson.string("title") ?: "No Title",
                                                 subreddit,

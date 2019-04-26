@@ -33,14 +33,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <TextView
-                android:layout_marginStart="5dp"
-                android:id="@+id/rarity_tv"
+        <ImageView
+                android:id="@+id/rarity_iv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hello World"
-                style="@style/OneRarityText"
+                android:layout_height="40dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/five"
                 app:layout_constraintBottom_toBottomOf="@id/iv1"
-        app:layout_constraintLeft_toLeftOf="@+id/iv1"/>
+                app:layout_constraintLeft_toLeftOf="parent"/>
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

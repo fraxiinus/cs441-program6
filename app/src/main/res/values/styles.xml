@@ -16,7 +16,7 @@
         <item name="android:shadowColor">#469400</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
-        <item name="android:shadowRadius">15</item>
+        <item name="android:shadowRadius">5</item>
     </style>
 
     <style name="OneRarityText">
@@ -27,7 +27,7 @@
         <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
-        <item name="android:shadowRadius">15</item>
+        <item name="android:shadowRadius">10</item>
     </style>
 
     <style name="TwoRarityText">
@@ -49,7 +49,7 @@
         <item name="android:shadowColor">#8D6000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
-        <item name="android:shadowRadius">15</item>
+        <item name="android:shadowRadius">30</item>
     </style>
 
 </resources>
