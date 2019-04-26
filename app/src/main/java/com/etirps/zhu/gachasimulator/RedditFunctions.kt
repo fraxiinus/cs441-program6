@@ -22,8 +22,8 @@ data class RedditData(var title: String, var subreddit: String, var filename: St
 class RedditFunctions(private val context: Context, private var queue: RequestQueue) {
 
     private var reddit_base_url = """https://www.reddit.com/r/"""
-    private var reddit_subreddit_url = arrayOf("bossfight", "hmmm", "woof_irl", "meow_irl", "blessedimages")
-    private var reddit_end_url = """/top/.json?count=20?sort=top&t=all"""
+    private var reddit_subreddit_url = arrayOf("bossfight", "AbsoluteUnits", "woof_irl", "meow_irl", "me_irl")
+    private var reddit_end_url = """/top/.json?count=20?sort=top&t=week"""
     private var rarity_list = arrayOf(arrayOf("F", "FF", "GARBAGE", "TRASH"), arrayOf("C", "CC", "MEH", "BLEH"), arrayOf("A", "AA", "COOL", "NEAT"), arrayOf("S", "SS", "BEST", "SSSRU+"))
 
     fun pullNewCharacter(rarity: RARITY_SCALE, callback: ServerCallback) {
