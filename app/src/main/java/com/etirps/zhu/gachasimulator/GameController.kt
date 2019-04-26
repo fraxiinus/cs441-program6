@@ -1,5 +1,7 @@
 package com.etirps.zhu.gachasimulator
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.graphics.Bitmap
 import android.support.constraint.ConstraintLayout
 import android.util.LruCache
@@ -14,8 +16,11 @@ import com.beust.klaxon.JsonObject
 
 class GameController(private val game_layout: View, private val queue: RequestQueue, private val imageLoader: ImageLoader): ViewController(game_layout) {
 
+    private val orbCounter = game_layout.findViewById<TextView>(R.id.orb_counter)
+    private val orbCost = 6
+
     override fun updateView() {
-        //
+        orbCounter.text = appData.cashMoney.toString()
     }
 
     private val redditFunctions = RedditFunctions(game_layout.context, queue)
@@ -23,9 +28,26 @@ class GameController(private val game_layout: View, private val queue: RequestQu
     private val onButtonClick = View.OnClickListener { view ->
         //Toast.makeText(game_layout.context, "button clicked!!!", Toast.LENGTH_SHORT).show()
         //game_layout.findViewById<TextView>(R.id.message).text = (game_layout.context.applicationContext as ApplicationData).cashMoney.toString()
-        view.visibility = View.GONE
-        game_layout.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.VISIBLE
-        pullCharacter()
+        if(appData.cashMoney < orbCost) {
+            val dialog = AlertDialog.Builder(game_layout.context)
+            dialog.setTitle("Not enough orbs!?")
+            dialog.setMessage("You need to buy more orbs!!")
+
+            dialog.setPositiveButton("OK") { dialogInterface: DialogInterface, which: Int ->
+                //(game_layout.context.applicationContext as ApplicationData).clearFlag = true
+                dialogInterface.dismiss()
+                //Toast.makeText(activity, "Tap anywhere on the map to clear", Toast.LENGTH_SHORT).show()
+            }
+
+            val alertDialog = dialog.create()
+            alertDialog.show()
+        } else {
+            appData.cashMoney -= orbCost
+            orbCounter.text = appData.cashMoney.toString()
+            view.visibility = View.GONE
+            game_layout.findViewById<ProgressBar>(R.id.progress_bar).visibility = View.VISIBLE
+            pullCharacter()
+        }
     }
 
     private val onCloseButtonClick = View.OnClickListener { view ->

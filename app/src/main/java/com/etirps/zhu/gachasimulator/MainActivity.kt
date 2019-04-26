@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.LruCache
 import android.view.animation.AnimationUtils
+import android.widget.TextView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
@@ -83,6 +84,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        findViewById<TextView>(R.id.orb_counter).text = (application as ApplicationData).cashMoney.toString()
 
         gameController = GameController(game_container, queue, imageLoader)
         collectionController = CollectionController(collection_container, imageLoader)

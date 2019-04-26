@@ -9,7 +9,7 @@
 
     <TextView
             android:id="@+id/sale_tv"
-            android:text="Special deal! Only 6 gems!"
+            android:text="Special deal! Only 6 orbs!"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="#315165"
@@ -49,6 +49,43 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/sale_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal">
+        <TextView
+                android:text="You only have: "
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#315165"
+                android:shadowColor="@android:color/white"
+                android:shadowRadius="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/orb_counter"
+                android:text="0"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#315165"
+                android:shadowColor="@android:color/white"
+                android:shadowRadius="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text=" orbs"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#315165"
+                android:shadowColor="@android:color/white"
+                android:shadowRadius="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
 
     <android.support.constraint.ConstraintLayout
             android:id="@+id/get_layout"
