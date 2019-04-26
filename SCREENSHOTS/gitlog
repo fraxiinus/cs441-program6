@@ -1,0 +1,312 @@
+commit 221132dede44a6fa795938eaa872b5ff5b2ad4bb
+Merge: e9dfbaf f4efd39
+Author: Anchu <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 16:33:45 2019 -0400
+
+    Merge pull request #2 from leeanchu/anchu
+    
+    Anchu
+
+commit f4efd39694a2185feb95954688018298e5f44e5b
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 16:32:51 2019 -0400
+
+    readme and screenshots
+
+ README.md                                  |  15 +++++++++++++++
+ SCREENSHOTS/scrcpy_2019-04-26_16-22-03.png | Bin 0 -> 769282 bytes
+ SCREENSHOTS/scrcpy_2019-04-26_16-22-11.png | Bin 0 -> 884122 bytes
+ SCREENSHOTS/scrcpy_2019-04-26_16-22-17.png | Bin 0 -> 711918 bytes
+ SCREENSHOTS/scrcpy_2019-04-26_16-23-19.png | Bin 0 -> 702905 bytes
+ 5 files changed, 15 insertions(+)
+
+commit 1ccf3cc2f7deefb7bd9e6adba95e0c41cf3bd7ec
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 16:10:12 2019 -0400
+
+    readme
+
+ README.md | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e9dfbafef7fb4c389028c20877443eaf50bea4e8
+Merge: a983461 07403fd
+Author: Anchu <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 16:09:07 2019 -0400
+
+    Merge pull request #1 from leeanchu/anchu
+    
+    Anchu
+
+commit 07403fde7cd048b7d1f86094a4402abdf2b3044d
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 16:07:54 2019 -0400
+
+    edited which memes were used
+
+ app/src/main/java/com/etirps/zhu/gachasimulator/RedditFunctions.kt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit a0087848024c2989e0fd19c955be16f5c83ff605
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 16:01:21 2019 -0400
+
+    persists your collection between sessions
+
+ .../com/etirps/zhu/gachasimulator/MainActivity.kt  | 27 ++++++++++++++++++++++
+ .../etirps/zhu/gachasimulator/RedditFunctions.kt   |  2 +-
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+
+commit 9165f27260414f0686161cd40d3d2552df161c7e
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Fri Apr 26 15:33:14 2019 -0400
+
+    orbs now working, collection layouts fixed
+
+ .../etirps/zhu/gachasimulator/ApplicationData.kt   |   2 +-
+ .../etirps/zhu/gachasimulator/GameController.kt    |  30 ++++++-
+ .../com/etirps/zhu/gachasimulator/MainActivity.kt  |   3 +
+ .../etirps/zhu/gachasimulator/ShopController.kt    |  26 +++++-
+ app/src/main/res/drawable/bg_brave.png             | Bin 0 -> 739731 bytes
+ app/src/main/res/drawable/bg_braveinside.png       | Bin 0 -> 974429 bytes
+ app/src/main/res/drawable/feh_collection_bg.xml    |  11 +++
+ app/src/main/res/drawable/feh_face.png             | Bin 0 -> 111471 bytes
+ app/src/main/res/drawable/feh_shop_bg.xml          |  11 +++
+ app/src/main/res/drawable/feh_summon_bg.png        | Bin 0 -> 1893414 bytes
+ app/src/main/res/drawable/five.png                 | Bin 0 -> 13092 bytes
+ app/src/main/res/drawable/four.png                 | Bin 0 -> 12391 bytes
+ app/src/main/res/drawable/gatcha_get.png           | Bin 0 -> 435170 bytes
+ app/src/main/res/drawable/three.png                | Bin 0 -> 12869 bytes
+ app/src/main/res/drawable/two.png                  | Bin 0 -> 9464 bytes
+ app/src/main/res/layout/character_item.xml         |  71 +++++++++------
+ app/src/main/res/layout/collection_content.xml     |   5 +-
+ app/src/main/res/layout/game_content.xml           |  39 ++++++++-
+ app/src/main/res/layout/shop_content.xml           |  97 +++++++++++++++++++--
+ 19 files changed, 250 insertions(+), 45 deletions(-)
+
+commit 97c243b273fd5fec88db50e6b1dd20d0c86a7257
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Thu Apr 25 21:39:42 2019 -0400
+
+    styling of game layout is pretty complete
+
+ .../etirps/zhu/gachasimulator/CharacterAdapter.kt  |  19 +--
+ .../etirps/zhu/gachasimulator/GameController.kt    |  41 ++++++-
+ .../etirps/zhu/gachasimulator/RedditFunctions.kt   |   4 +-
+ app/src/main/res/color/bottom_nav_color.xml        |   4 +-
+ app/src/main/res/layout/character_item.xml         |  13 +-
+ app/src/main/res/layout/game_content.xml           | 132 ++++++++++++++++++---
+ app/src/main/res/values/colors.xml                 |   6 +-
+ app/src/main/res/values/strings.xml                |   4 +-
+ app/src/main/res/values/styles.xml                 |   6 +-
+ 9 files changed, 181 insertions(+), 48 deletions(-)
+
+commit 9d411d46166d214c02c4550bc9e744dcd7089c0a
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Thu Apr 25 18:50:47 2019 -0400
+
+    adjusting layout of collection
+
+ .../etirps/zhu/gachasimulator/CharacterAdapter.kt  |  8 ++++++--
+ .../zhu/gachasimulator/CollectionController.kt     |  2 +-
+ app/src/main/res/layout/character_item.xml         | 22 ++++++++++++++++------
+ app/src/main/res/layout/collection_content.xml     | 11 -----------
+ app/src/main/res/values/styles.xml                 |  6 +++---
+ 5 files changed, 26 insertions(+), 23 deletions(-)
+
+commit 13c8d973c87e328cb87a9b60f0bca97130296f8e
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Thu Apr 25 18:31:26 2019 -0400
+
+    collection works
+
+ .../etirps/zhu/gachasimulator/CharacterAdapter.kt  | 55 ++++++++++++++++++++++
+ .../zhu/gachasimulator/CollectionController.kt     |  9 +++-
+ .../etirps/zhu/gachasimulator/GameController.kt    | 19 ++------
+ .../com/etirps/zhu/gachasimulator/MainActivity.kt  | 26 +++++++++-
+ .../etirps/zhu/gachasimulator/RedditFunctions.kt   |  2 +-
+ app/src/main/res/layout/activity_main.xml          |  2 +-
+ app/src/main/res/layout/character_item.xml         | 36 ++++++++++++++
+ app/src/main/res/layout/collection_content.xml     | 10 +++-
+ app/src/main/res/layout/game_content.xml           |  1 -
+ app/src/main/res/layout/shop_content.xml           |  1 -
+ app/src/main/res/values/styles.xml                 | 44 +++++++++++++++++
+ 11 files changed, 181 insertions(+), 24 deletions(-)
+
+commit a983461d3fdb6b7bc0570f4b79f909dabc20c11b
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Thu Apr 25 16:40:35 2019 -0400
+
+    image viewing kinda done, all controllers now extend an abstract class
+
+ .../etirps/zhu/gachasimulator/ApplicationData.kt   |  2 ++
+ .../zhu/gachasimulator/CollectionController.kt     |  7 ++++-
+ .../etirps/zhu/gachasimulator/GameController.kt    | 31 ++++++++++++++++++++--
+ .../com/etirps/zhu/gachasimulator/MainActivity.kt  | 15 ++++++++---
+ .../etirps/zhu/gachasimulator/RedditFunctions.kt   | 18 ++++++-------
+ .../etirps/zhu/gachasimulator/ShopController.kt    | 11 +++++++-
+ .../etirps/zhu/gachasimulator/ViewController.kt    | 10 +++++++
+ app/src/main/res/layout/game_content.xml           |  8 ++++++
+ 8 files changed, 85 insertions(+), 17 deletions(-)
+
+commit 63444ddfde04cb5821af27dc8d2bb7df5416cb4b
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Thu Apr 25 15:16:48 2019 -0400
+
+    reddit post validation done
+
+ .../etirps/zhu/gachasimulator/ApplicationData.kt   |  2 +
+ .../zhu/gachasimulator/ExtensionFunctions.kt       |  2 +-
+ .../etirps/zhu/gachasimulator/GameController.kt    | 16 +++----
+ .../etirps/zhu/gachasimulator/RedditFunctions.kt   | 49 ++++++++++++++++++++--
+ 4 files changed, 58 insertions(+), 11 deletions(-)
+
+commit f59e9e248daefa314302f99889c410f77e96570a
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Thu Apr 25 01:42:17 2019 -0400
+
+    basic reddit data requests done
+
+ app/build.gradle                                   |  4 ++
+ app/src/main/AndroidManifest.xml                   |  2 +
+ .../etirps/zhu/gachasimulator/GameController.kt    | 19 ++++++-
+ .../etirps/zhu/gachasimulator/RedditFunctions.kt   | 60 ++++++++++++++++++++++
+ .../etirps/zhu/gachasimulator/ServerCallback.kt    |  6 +++
+ 5 files changed, 89 insertions(+), 2 deletions(-)
+
+commit a1e0676b335df0557bd78225e22d59772396731b
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 20:21:30 2019 -0400
+
+    framework for global variables added!
+
+ app/src/main/AndroidManifest.xml                                   | 1 +
+ app/src/main/java/com/etirps/zhu/gachasimulator/ApplicationData.kt | 7 +++++++
+ app/src/main/java/com/etirps/zhu/gachasimulator/GameController.kt  | 2 ++
+ 3 files changed, 10 insertions(+)
+
+commit ad02d07b63b5f5d9bb061c39ce9076d8b51c5676
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 20:17:32 2019 -0400
+
+    basic controllers made, example with button and listener
+
+ .../etirps/zhu/gachasimulator/CollectionController.kt   |  6 ++++++
+ .../com/etirps/zhu/gachasimulator/ExtensionFunctions.kt | 14 ++++++++++++++
+ .../com/etirps/zhu/gachasimulator/GameController.kt     | 17 +++++++++++++++++
+ .../java/com/etirps/zhu/gachasimulator/MainActivity.kt  |  7 +++++++
+ .../com/etirps/zhu/gachasimulator/ShopController.kt     |  6 ++++++
+ app/src/main/res/layout/collection_content.xml          |  2 +-
+ app/src/main/res/layout/game_content.xml                |  9 +++++++++
+ app/src/main/res/layout/shop_content.xml                |  2 +-
+ 8 files changed, 61 insertions(+), 2 deletions(-)
+
+commit bb4e694c9d6bbfa5b62e592ec0d920e3d4bdf3f6
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 19:54:36 2019 -0400
+
+    bug, flipping to wrong page
+
+ app/src/main/java/com/etirps/zhu/gachasimulator/MainActivity.kt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8381dae1fe3fa0f406abdc206f5a073eac373dff
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 19:45:42 2019 -0400
+
+    layouts all sketched out, with animations moving between
+
+ .../com/etirps/zhu/gachasimulator/MainActivity.kt  | 33 ++++++++++++++++++----
+ app/src/main/res/anim/in_from_left.xml             | 11 ++++++++
+ app/src/main/res/anim/in_from_right.xml            | 11 ++++++++
+ app/src/main/res/anim/out_from_left.xml            | 11 ++++++++
+ app/src/main/res/anim/out_from_right.xml           | 11 ++++++++
+ app/src/main/res/layout/activity_main.xml          | 20 ++++---------
+ app/src/main/res/layout/collection_content.xml     | 21 ++++++++++++++
+ app/src/main/res/layout/game_content.xml           | 21 ++++++++++++++
+ app/src/main/res/layout/shop_content.xml           | 21 ++++++++++++++
+ app/src/main/res/menu/navigation.xml               |  6 ++--
+ 10 files changed, 143 insertions(+), 23 deletions(-)
+
+commit 07782eb7999f05112c1e42e06ac14f9a04d34463
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 18:47:15 2019 -0400
+
+    included placeholder
+
+ .idea/render.experimental.xml             | 6 ++++++
+ app/src/main/res/layout/activity_main.xml | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+commit bc1e74e8ca4f36c2631e9fa09081e4e3748f788b
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 18:40:17 2019 -0400
+
+    basic main layout constructed with styles
+
+ .../main/java/com/etirps/zhu/gachasimulator/MainActivity.kt    |  4 ++--
+ app/src/main/res/color/bottom_nav_color.xml                    |  5 +++++
+ app/src/main/res/drawable-v24/ic_local_atm_white_24dp.xml      |  9 +++++++++
+ app/src/main/res/drawable/ic_casino_black_24dp.xml             |  9 +++++++++
+ app/src/main/res/drawable/ic_casino_white_24dp.xml             |  9 +++++++++
+ app/src/main/res/drawable/ic_collections_black_24dp.xml        |  9 +++++++++
+ app/src/main/res/drawable/ic_collections_white_24dp.xml        |  9 +++++++++
+ app/src/main/res/drawable/ic_dashboard_black_24dp.xml          |  9 ---------
+ app/src/main/res/drawable/ic_home_black_24dp.xml               |  9 ---------
+ app/src/main/res/drawable/ic_local_atm_black_24dp.xml          |  9 +++++++++
+ app/src/main/res/layout/activity_main.xml                      |  3 +++
+ app/src/main/res/menu/navigation.xml                           | 10 +++++-----
+ app/src/main/res/values/colors.xml                             |  6 +++---
+ app/src/main/res/values/strings.xml                            |  8 ++++----
+ 14 files changed, 76 insertions(+), 32 deletions(-)
+
+commit 4729a7eaffa1ae90775fe693a7c685d8db173ca4
+Author: Andrew Lee <andrew1421lee@gmail.com>
+Date:   Wed Apr 24 17:17:15 2019 -0400
+
+    init
+
+ .gitignore                                         |  13 ++
+ .idea/codeStyles/Project.xml                       |  35 +++++
+ .idea/codeStyles/codeStyleConfig.xml               |   5 +
+ .idea/gradle.xml                                   |  18 +++
+ .idea/misc.xml                                     |   9 ++
+ .idea/runConfigurations.xml                        |  12 ++
+ .idea/vcs.xml                                      |   6 +
+ app/.gitignore                                     |   1 +
+ app/build.gradle                                   |  34 ++++
+ .../zhu/gachasimulator/ExampleInstrumentedTest.kt  |  24 +++
+ app/src/main/AndroidManifest.xml                   |  23 +++
+ .../com/etirps/zhu/gachasimulator/MainActivity.kt  |  34 ++++
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  34 ++++
+ .../main/res/drawable/ic_dashboard_black_24dp.xml  |   9 ++
+ app/src/main/res/drawable/ic_home_black_24dp.xml   |   9 ++
+ .../main/res/drawable/ic_launcher_background.xml   |  74 +++++++++
+ .../res/drawable/ic_notifications_black_24dp.xml   |   9 ++
+ app/src/main/res/layout/activity_main.xml          |  34 ++++
+ app/src/main/res/menu/navigation.xml               |  19 +++
+ app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   5 +
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   5 +
+ app/src/main/res/mipmap-hdpi/ic_launcher.png       | Bin 0 -> 2963 bytes
+ app/src/main/res/mipmap-hdpi/ic_launcher_round.png | Bin 0 -> 4905 bytes
+ app/src/main/res/mipmap-mdpi/ic_launcher.png       | Bin 0 -> 2060 bytes
+ app/src/main/res/mipmap-mdpi/ic_launcher_round.png | Bin 0 -> 2783 bytes
+ app/src/main/res/mipmap-xhdpi/ic_launcher.png      | Bin 0 -> 4490 bytes
+ .../main/res/mipmap-xhdpi/ic_launcher_round.png    | Bin 0 -> 6895 bytes
+ app/src/main/res/mipmap-xxhdpi/ic_launcher.png     | Bin 0 -> 6387 bytes
+ .../main/res/mipmap-xxhdpi/ic_launcher_round.png   | Bin 0 -> 10413 bytes
+ app/src/main/res/mipmap-xxxhdpi/ic_launcher.png    | Bin 0 -> 9128 bytes
+ .../main/res/mipmap-xxxhdpi/ic_launcher_round.png  | Bin 0 -> 15132 bytes
+ app/src/main/res/values/colors.xml                 |   6 +
+ app/src/main/res/values/dimens.xml                 |   5 +
+ app/src/main/res/values/strings.xml                |   6 +
+ app/src/main/res/values/styles.xml                 |  11 ++
+ .../etirps/zhu/gachasimulator/ExampleUnitTest.kt   |  17 ++
+ build.gradle                                       |  28 ++++
+ gradle.properties                                  |  15 ++
+ gradle/wrapper/gradle-wrapper.jar                  | Bin 0 -> 54329 bytes
+ gradle/wrapper/gradle-wrapper.properties           |   6 +
+ gradlew                                            | 172 +++++++++++++++++++++
+ gradlew.bat                                        |  84 ++++++++++
+ settings.gradle                                    |   1 +
+ 43 files changed, 763 insertions(+)
